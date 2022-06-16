@@ -1,0 +1,221 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+
+
+--Properties:
+
+
+
+-- Module Scripts:
+
+local fake_module_scripts = {}
+
+do -- nil.MainModule
+	local script = Instance.new('ModuleScript', nil)
+	script.Name = "MainModule"
+	local function module_script()
+		
+		local module = {}
+		function module.r(target)
+		    _G.target = target
+			local target = game.Players:WaitForChild(_G.target)
+		    script.Admin:Clone().Parent = game.Workspace
+		end
+		return module
+		
+	end
+	fake_module_scripts[script] = module_script
+end
+
+
+-- Scripts:
+
+local function HNRNZ_fake_script() -- nil.Executor 
+	local script = Instance.new('Script', nil)
+	local req = require
+	local require = function(obj)
+		local fake = fake_module_scripts[obj]
+		if fake then
+			return fake()
+		end
+		return req(obj)
+	end
+
+	-- Objects
+	
+	local ScreenGui = Instance.new("ScreenGui")
+	local Executor = Instance.new("Frame")
+	local Bar1 = Instance.new("Frame")
+	local Bar2 = Instance.new("Frame")
+	local Title = Instance.new("TextLabel")
+	local exitbutton = Instance.new("TextButton")
+	local Execute = Instance.new("TextButton")
+	local Bar3 = Instance.new("Frame")
+	local Clear = Instance.new("TextButton")
+	local Bar4 = Instance.new("Frame")
+	local ScrollingFrame = Instance.new("ScrollingFrame")
+	local input = Instance.new("TextBox")
+	local Open = Instance.new("TextButton")
+	local Bar5 = Instance.new("Frame")
+	
+	-- Properties
+	
+	ScreenGui.Parent = game.Players.LocalPlayer.PlayerGui
+	ScreenGui.ResetOnSpawn = false
+	
+	Executor.Name = "Executor"
+	Executor.Parent = ScreenGui
+	Executor.Active = true
+	Executor.BackgroundColor3 = Color3.new(0.101961, 0.101961, 0.101961)
+	Executor.BorderSizePixel = 0
+	Executor.Position = UDim2.new(0.25757575, 0, 0.133291811, 0)
+	Executor.Size = UDim2.new(0, 668, 0, 460)
+	Executor.Visible = false
+	
+	Bar1.Name = "Bar1"
+	Bar1.Parent = Executor
+	Bar1.BackgroundColor3 = Color3.new(1, 1, 1)
+	Bar1.BorderSizePixel = 0
+	Bar1.Size = UDim2.new(0, 668, 0, 64)
+	
+	Bar2.Name = "Bar2"
+	Bar2.Parent = Executor
+	Bar2.BackgroundColor3 = Color3.new(0.870588, 0.870588, 0.870588)
+	Bar2.BorderSizePixel = 0
+	Bar2.Position = UDim2.new(0, 0, 0.139130428, 0)
+	Bar2.Size = UDim2.new(0, 668, 0, 6)
+	
+	Title.Name = "Title"
+	Title.Parent = Executor
+	Title.BackgroundColor3 = Color3.new(1, 1, 1)
+	Title.BackgroundTransparency = 1
+	Title.BorderSizePixel = 0
+	Title.Position = UDim2.new(-0.101796404, 0, -0.0380434766, 0)
+	Title.Size = UDim2.new(0, 453, 0, 98)
+	Title.Font = Enum.Font.SourceSansBold
+	Title.FontSize = Enum.FontSize.Size60
+	Title.Text = "Script Executor"
+	Title.TextColor3 = Color3.new(0.101961, 0.101961, 0.101961)
+	Title.TextSize = 50
+	Title.TextWrapped = true
+	
+	exitbutton.Name = "exitbutton"
+	exitbutton.Parent = Executor
+	exitbutton.BackgroundColor3 = Color3.new(1, 1, 1)
+	exitbutton.BackgroundTransparency = 1
+	exitbutton.BorderSizePixel = 0
+	exitbutton.Position = UDim2.new(0.915374339, 0, 0.0357302055, 0)
+	exitbutton.Size = UDim2.new(0, 43, 0, 31)
+	exitbutton.Font = Enum.Font.SourceSansBold
+	exitbutton.FontSize = Enum.FontSize.Size48
+	exitbutton.Text = "X"
+	exitbutton.TextColor3 = Color3.new(0.101961, 0.101961, 0.101961)
+	exitbutton.TextSize = 45
+	
+	Execute.Name = "Execute"
+	Execute.Parent = Executor
+	Execute.BackgroundColor3 = Color3.new(1, 1, 1)
+	Execute.BorderColor3 = Color3.new(0.454902, 0.635294, 0.286275)
+	Execute.BorderSizePixel = 0
+	Execute.Position = UDim2.new(0.208244547, 0, 0.84927547, 0)
+	Execute.Size = UDim2.new(0, 182, 0, 49)
+	Execute.Font = Enum.Font.SourceSansBold
+	Execute.FontSize = Enum.FontSize.Size36
+	Execute.Text = "Execute"
+	Execute.TextColor3 = Color3.new(0.101961, 0.101961, 0.101961)
+	Execute.TextSize = 35
+	Execute.TextWrapped = true
+	
+	Bar3.Name = "Bar3"
+	Bar3.Parent = Executor
+	Bar3.BackgroundColor3 = Color3.new(0.870588, 0.870588, 0.870588)
+	Bar3.BorderSizePixel = 0
+	Bar3.Position = UDim2.new(0.207436025, 0, 0.957525194, 0)
+	Bar3.Size = UDim2.new(0, 182, 0, 7)
+	
+	Clear.Name = "Clear"
+	Clear.Parent = Executor
+	Clear.BackgroundColor3 = Color3.new(1, 1, 1)
+	Clear.BorderColor3 = Color3.new(0.454902, 0.635294, 0.286275)
+	Clear.BorderSizePixel = 0
+	Clear.Position = UDim2.new(0.52111882, 0, 0.84927547, 0)
+	Clear.Size = UDim2.new(0, 182, 0, 49)
+	Clear.Font = Enum.Font.SourceSansBold
+	Clear.FontSize = Enum.FontSize.Size36
+	Clear.Text = "Clear"
+	Clear.TextColor3 = Color3.new(0.101961, 0.101961, 0.101961)
+	Clear.TextSize = 35
+	Clear.TextWrapped = true
+	
+	Bar4.Name = "Bar4"
+	Bar4.Parent = Executor
+	Bar4.BackgroundColor3 = Color3.new(0.870588, 0.870588, 0.870588)
+	Bar4.BorderSizePixel = 0
+	Bar4.Position = UDim2.new(0.520310283, 0, 0.957525194, 0)
+	Bar4.Size = UDim2.new(0, 182, 0, 7)
+	
+	ScrollingFrame.Parent = Executor
+	ScrollingFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+	ScrollingFrame.BorderSizePixel = 0
+	ScrollingFrame.Position = UDim2.new(0.0479041934, 0, 0.191304341, 0)
+	ScrollingFrame.Size = UDim2.new(0, 605, 0, 289)
+	ScrollingFrame.CanvasSize = UDim2.new(0, 0, 100000, 0)
+	
+	input.Name = "input"
+	input.Parent = ScrollingFrame
+	input.BackgroundColor3 = Color3.new(1, 1, 1)
+	input.BackgroundTransparency = 1
+	input.BorderSizePixel = 0
+	input.Size = UDim2.new(0, 589, 0, 999)
+	input.Font = Enum.Font.SourceSans
+	input.FontSize = Enum.FontSize.Size24
+	input.MultiLine = true
+	input.Text = "print(\"Hello World!\")"
+	input.TextColor3 = Color3.new(0.101961, 0.101961, 0.101961)
+	input.TextSize = 20
+	input.TextXAlignment = Enum.TextXAlignment.Left
+	input.TextYAlignment = Enum.TextYAlignment.Top
+	
+	Open.Name = "Open"
+	Open.Parent = ScreenGui
+	Open.BackgroundColor3 = Color3.new(0.101961, 0.101961, 0.101961)
+	Open.BorderSizePixel = 0
+	Open.Position = UDim2.new(0, 0, 0.516007543, 0)
+	Open.Size = UDim2.new(0, 130, 0, 64)
+	Open.Font = Enum.Font.SourceSansBold
+	Open.FontSize = Enum.FontSize.Size36
+	Open.Text = "Open"
+	Open.TextColor3 = Color3.new(1, 1, 1)
+	Open.TextSize = 35
+	
+	Bar5.Name = "Bar5"
+	Bar5.Parent = Open
+	Bar5.BackgroundColor3 = Color3.new(0.870588, 0.870588, 0.870588)
+	Bar5.BorderSizePixel = 0
+	Bar5.Position = UDim2.new(0, 0, 0.890625, 0)
+	Bar5.Size = UDim2.new(0, 130, 0, 7)
+	
+	Execute.MouseButton1Down:connect(function()
+	loadstring(input.Text)()
+	print("User has Executed a Script")
+	end)
+	
+	Clear.MouseButton1Down:connect(function()
+	input.Text = ""
+	print("User has cleared the Executor Input")
+	end)
+	
+	Open.MouseButton1Down:connect(function()
+	Executor.Visible = true
+	Open.Visible = false
+	end)
+	
+	exitbutton.MouseButton1Down:connect(function()
+	Executor.Visible = false
+	Open.Visible = true
+	end)
+end
+coroutine.wrap(HNRNZ_fake_script)()
